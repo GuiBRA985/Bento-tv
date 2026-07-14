@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071a36">
+  <meta name="description" content="Bento TV — O mundo cabe aqui. Canais organizados por país e assunto.">
+  <title>Bento TV — O mundo cabe aqui</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="logo">B</span><span><b>BENTO TV</b><small>O mundo cabe aqui.</small></span></a>
+  <nav>
+    <button class="nav active" data-view="home">Início</button>
+    <button class="nav" data-view="countries">Países</button>
+    <button class="nav" data-view="categories">Assuntos</button>
+    <button class="nav" data-view="favorites">Favoritos</button>
+  </nav>
+  <button class="ai-button small" data-random>IA HAHAHAHA</button>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">TELEVISÃO DO MUNDO INTEIRO</span>
+      <h1>O mundo<br>cabe aqui.</h1>
+      <p>Explore canais por país, por assunto ou deixe o Bento escolher algo aleatório.</p>
+      <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar canal, país ou assunto..."></label>
+      <div class="hero-actions">
+        <button class="ai-button" data-random><b>IA HAHAHAHA</b><small>Escolha algo para mim</small></button>
+        <button class="brazil-button" id="brazilButton">🇧🇷 Ver Brasil</button>
+      </div>
+    </div>
+
+    <div class="player-card">
+      <div class="player-wrap">
+        <video id="player" controls playsinline></video>
+        <div id="placeholder" class="placeholder"><span>▶</span><b>Escolha um canal</b><small>A transmissão aparecerá aqui.</small></div>
+      </div>
+      <div class="now-playing">
+        <div class="channel-logo"><img id="nowLogo" alt="" hidden><b id="nowFallback">TV</b></div>
+        <div><span class="live">AO VIVO</span><h2 id="nowTitle">Bento TV</h2><p id="nowMeta">Escolha um canal para começar.</p></div>
+        <button id="favoriteCurrent" class="star">☆</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="shortcuts">
+    <button data-category="news" class="blue">📰<b>Notícias</b></button>
+    <button data-category="sports" class="green">⚽<b>Esportes</b></button>
+    <button data-category="music" class="yellow">🎵<b>Música</b></button>
+    <button data-category="education" class="blue">📚<b>Educação</b></button>
+    <button data-category="documentary" class="green">🌎<b>Documentários</b></button>
+    <button data-category="kids" class="yellow">🧸<b>Infantil</b></button>
+  </section>
+
+  <section class="catalog">
+    <div class="catalog-head">
+      <div><span class="eyebrow" id="sectionEyebrow">DESCUBRA</span><h2 id="sectionTitle">Destaques do mundo</h2><p id="sectionDescription">Países, assuntos e canais organizados para você.</p></div>
+      <div class="filters"><select id="region"><option value="">Todos os continentes</option></select><select id="sort"><option value="name">Ordem alfabética</option><option value="count">Mais canais</option></select></div>
+    </div>
+    <div id="stats" class="stats">Carregando o catálogo...</div>
+
+    <div id="homeView" class="view visible">
+      <div class="block"><div class="block-title"><h3>🇧🇷 Brasil em destaque</h3><button data-country="BR">Ver todos</button></div><div id="brazilGrid" class="grid channels"></div></div>
+      <div class="block"><div class="block-title"><h3>🌎 Explore por país</h3><button data-go="countries">Ver todos</button></div><div id="featuredCountries" class="grid countries"></div></div>
+      <div class="block"><div class="block-title"><h3>🧠 Explore por assunto</h3><button data-go="categories">Ver todos</button></div><div id="featuredCategories" class="grid categories"></div></div>
+    </div>
+
+    <div id="countriesView" class="view"><div id="countriesGrid" class="grid countries"></div></div>
+    <div id="categoriesView" class="view"><div id="categoriesGrid" class="grid categories"></div></div>
+    <div id="channelsView" class="view"><div class="backline"><button id="back">← Voltar</button><div><h3 id="channelsTitle"></h3><p id="channelsDescription"></p></div></div><div id="channelsGrid" class="grid channels"></div></div>
+    <div id="favoritesView" class="view"><div id="favoritesGrid" class="grid channels"></div></div>
+    <div id="searchView" class="view"><div id="searchGrid" class="grid channels"></div></div>
+  </section>
+
+  <section class="ai-panel"><div class="ai-stamp">IA<br>HAHAHA</div><div><h2>Milhares de canais. Nenhuma ideia do que assistir.</h2><p>Deixe o Bento escolher algo de qualquer canto do planeta.</p></div><button class="ai-button" data-random>Surpreenda-me</button></section>
+  <section class="notice"><b>Aviso importante</b><p>O Bento TV não hospeda vídeos nem retransmite sinais. O site organiza links externos informados como publicamente disponíveis pela coleção IPTV-org. Alguns canais podem sair do ar, restringir países ou impedir reprodução no navegador.</p></section>
+</main>
+<footer><span>© <span id="year"></span> Bento TV</span><b>O mundo cabe aqui.</b></footer>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
